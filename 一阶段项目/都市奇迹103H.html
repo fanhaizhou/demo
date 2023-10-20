@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 初始化 */
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            color: inherit;
+            outline: none;
+            border: none;
+            background-color: transparent;
+        }
+
+        /* 背景图 */
+        .bg__game__01 {
+            background-image: url(https://103.mu10.com/assets/2/Images/bg_main_170518.jpg);
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: 0px;
+
+            background-size: initial;
+            background-repeat: no-repeat;
+
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(11, 0, 0);
+
+        }
+
+        /* logo栏 */
+        .logo__box {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgb(253, 253, 253);
+            font-size: 12px;
+        }
+
+        .logoWrap {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .userWrap {
+            display: flex;
+            align-items: center;
+        }
+
+        .logoWrap__item {
+            padding: 5px 10px;
+        }
+
+        .userWrap__item {
+            padding: 5px;
+            height: 100%;
+        }
+
+        .userWrap__item {
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            color: black;
+            line-height: inherit;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .logoWrap__item-red {
+            color: red;
+        }
+
+        /* 头部 */
+        .header__container {
+            width: 100%;
+        }
+        nav{
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+
+
+        .nav__list {
+            margin-top: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .nav__list__items {
+            display: flex;
+            align-items: center;
+
+        }
+    </style>
+</head>
+<!-- 背景图 -->
+
+<body class="bg__game__01">
+    <div class="logo__box">
+        <div class="logoWrap">
+            <img class="logoWrap__item" height="28" src="./logo.jpg" alt="">
+            <p class="logoWrap__item">都市奇迹|品牌老服</p>
+            <p class="logoWrap__item logoWrap__item-red ">本游戏需要年满18岁进入</p>
+        </div>
+        <div class="userWrap">
+            <a class="userWrap__item" href="">在线客服</a>
+            <a class="userWrap__item" href="">注册账号</a>
+            <a class="userWrap__item" href="">登录账号</a>
+        </div>
+    </div>
+
+    <header class="header__container">
+        <nav>
+            <ul class="nav__list">
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>游戏主页</h3>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>下载中心</h3>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>注册账号</h3>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href=""><img src="https://103.mu10.com/assets/2/Images/img_logo01.png" alt=""></a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>会员功能</h3>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>游戏排行</h3>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="">
+                        <h3>游戏赞助</h3>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+    </header>
+
+</body>
+
+</html>
