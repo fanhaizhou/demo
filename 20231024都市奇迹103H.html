@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 初始化 */
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            color: inherit;
+            outline: none;
+            border: none;
+            background-color: transparent;
+        }
+
+        /* 背景图 */
+        .bg__game__01 {
+            background-image: url(https://103.mu10.com/assets/2/Images/bg_main_170518.jpg);
+            background-size: cover;
+            background-position-x: center;
+            background-position-y: 0px;
+
+            background-size: initial;
+            background-repeat: no-repeat;
+
+            background-attachment: initial;
+            background-origin: initial;
+            background-clip: initial;
+            background-color: rgb(11, 0, 0);
+
+        }
+
+        /* logo栏 */
+        .logo__box {
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            background-color: rgb(253, 253, 253);
+            font-size: 12px;
+        }
+
+        .logoWrap {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .userWrap {
+            display: flex;
+            align-items: center;
+        }
+
+        .logoWrap__item {
+            padding: 5px 10px;
+        }
+
+        .userWrap__item {
+            padding: 5px;
+            height: 100%;
+        }
+
+        .userWrap__item {
+            border-left: 1px solid #ccc;
+            border-right: 1px solid #ccc;
+            color: black;
+            line-height: inherit;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 10px;
+
+        }
+
+        .logoWrap__item-red {
+            color: red;
+        }
+
+        /* 头部 */
+        .header__container {
+            width: 100%;
+        }
+
+        nav {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+
+
+        .nav__list {
+            margin-top: 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+        .nav__list__items {
+            display: flex;
+            align-items: center;
+            position: relative;
+
+        }
+
+        .nav__list__items:hover {
+            transform: translate(0, -10px);
+        }
+
+
+        .nav__list__items__panel {
+            position: absolute;
+            color: #999;
+            display: none;
+            top: calc(100% + 10px);
+        }
+
+        .nav__list__items:hover .nav__list__items__panel {
+            display: block;
+        }
+
+        .nav__list__items__panel-third {
+            position: absolute;
+            color: #999;
+            top: calc(100% + 10px);
+            display: flex;
+            flex-direction: column;
+            display: none;
+        }
+
+        .nav__list__items:hover .nav__list__items__panel-third {
+            display: flex;
+
+        }
+
+        /* 主体部分 */
+        .body__container {
+            max-width: 1100px;
+            background-color: white;
+            margin: 100px auto 0;
+            padding: 50px;
+        }
+
+        .body__container__top {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+        }
+
+        /* 游戏日志 */
+        .gameLog__txt {
+            display: block;
+            height: 60px;
+            overflow: hidden;
+            font-size: 12px;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        .gameLog {
+            clear: both;
+            height: 311px;
+            width: 410px;
+            position: relative;
+
+        }
+
+        .gameLog__list {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+
+        }
+
+        .gameLog__list__item {
+            margin-left: 10px;
+        }
+
+        .gameLog__btn__more {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 18px;
+            height: 0;
+            padding-top: 18px;
+            overflow: hidden;
+            background: url(https://103.mu10.com/assets/2/Images/btn_more01.gif) 0 0 no-repeat;
+        }
+
+        /* 游戏公告  */
+        .gameNotice {
+            position: relative;
+            width: 270px;
+            height: 311px;
+            /* clear: both; */
+            font-size: 12px;
+            margin: 0 80px;
+            /* padding: 30px; */
+
+        }
+
+        .gameNotice__title {
+            color: red;
+            border-bottom: 2px solid red;
+            padding-bottom: 5px;
+            display: inline-block;
+            font-size: 20px;
+
+        }
+
+        .gameNotice__title__list {
+            border-top: 1px solid #ccc;
+
+        }
+
+        .gameNotice__title__list__item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px;
+            color: rgb(43, 81, 124)
+        }
+
+        .gameNotice__title__list__item-text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .time {
+            /* float: right !important; */
+            white-space: nowrap;
+            color: black;
+        }
+
+        .gameNotice__btn__more {
+            position: absolute;
+            right: 0;
+            top: 2px;
+            width: 30px;
+            height: 0;
+            padding-top: 19px;
+            overflow: hidden;
+            background: url(https://103.mu10.com/assets/2/Images/btn_more01.gif) 0 0 no-repeat;
+        }
+
+        .gameDes {
+            width: 780px;
+        }
+
+        table {
+
+            border: 1px solid black;
+
+        }
+
+        .gameDes__title {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .gameDes__text {
+            font-size: 14px;
+        }
+
+        td {
+            border: 1px solid black;
+        }
+
+        .tr1,
+        .tr2,
+        .tr3,
+        .tr13 {
+            color: #2c82c9;
+        }
+
+        .tr4,
+        .tr11,
+        .tr12 {
+            color: #41A85F;
+        }
+
+        .tr5 {
+            color: #D14841;
+        }
+
+        .tr6,
+        .tr10 {
+            color: #F37934;
+        }
+
+        .tr7 {
+            color: #A38F84;
+        }
+
+        .tr8 {
+            color: #475577;
+        }
+
+        .tr9,
+        .tr16 {
+            color: #333333;
+        }
+
+        .tr14 {
+            color: #553982;
+        }
+
+        .tr15 {
+            color: #9365B8;
+        }
+
+        .tr17 {
+            color: #475577;
+        }
+
+        .tr18,
+        .tr27 {
+            color: #ff0000;
+        }
+
+        .tr19,
+        .tr20,
+        .tr21,
+        .tr22,
+        .tr23,
+        .tr24,
+        .tr25,
+        .tr26 {
+            color: #0000ff;
+        }
+
+        /* 侧边栏 */
+        .asideBox {
+            float: right;
+            top: -1455px;
+            width: 240px;
+            /* height: 310px; */
+            position: relative;
+            overflow-y: auto;
+            box-sizing: border-box;
+            /* margin: 0 20px; */
+        }
+
+        .Retrieve-password {
+            border-right: 1px solid #4c5158;
+            color: #ab7323;
+            padding-right: 8px;
+        }
+
+        .quickLink {
+            border: 1px solid #ccc;
+            margin-top: 16px;
+            padding: 8px;
+        }
+
+        .quickLink__link {
+            margin-top: 16px;
+        }
+
+        .gameVersion {
+            margin-top: 20px;
+        }
+
+        .gameVersion__link {
+            font-size: 12px;
+            padding: 5px 0;
+            color: #337ab7;
+        }
+
+        .iconLink {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            margin-top: 16px;
+        }
+
+        .customerService {
+            margin-top: 16px;
+        }
+
+        .customerService__table {
+            font-size: 14px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* 页脚 */
+        .footer_container {
+            width: 1200px;
+            box-sizing: border-box;
+            margin: 0 auto;
+            background-color: #efefef;
+            padding-bottom: 50px;
+
+
+        }
+
+        .smap {
+            margin: 0 auto;
+            padding: 30px 0;
+            background: url(https://103.mu10.com/assets/2/Images/bt.jpg) no-repeat center;
+            width: 1200px;
+            box-sizing: border-box;
+            height: 180px;
+            border-bottom: 1px solid #fff;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            padding: 20px 50px;
+            /* width: 917px; */
+            /* margin: 0 auto; */
+            /* box-sizing: border-box; */
+
+
+        }
+
+        .info__content__list {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            padding: 0 20px;
+
+        }
+
+        .info__content__list__items {
+            padding: 10px;
+            font-size: 12px;
+            border-right: 1px solid #ccc;
+        }
+
+        .filings {
+            font-size: 13px;
+            width: 1200px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            text-align: end;
+            line-height: 30px;
+        }
+
+        /* 媒体查询 */
+        @media screen and (max-width:1120px) {
+            .asideBox {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width:830px) {
+            .gameNotice {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<!-- 背景图 -->
+
+<body class="bg__game__01">
+    <div class="logo__box" id="top">
+        <div class="logoWrap">
+            <img class="logoWrap__item" height="28" src="./logo.jpg" alt="">
+            <p class="logoWrap__item">都市奇迹|品牌老服</p>
+            <p class="logoWrap__item logoWrap__item-red ">本游戏需要年满18岁进入</p>
+        </div>
+        <div class="userWrap">
+            <a class="userWrap__item" href="" target="_blank">在线客服</a>
+            <a class="userWrap__item" href="" target="_blank">注册账号</a>
+            <a class="userWrap__item" href="" target="_blank">登录账号</a>
+        </div>
+    </div>
+
+    <header class="header__container">
+        <nav>
+            <ul class="nav__list">
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>游戏主页</h3>
+                        <div class="nav__list__items__panel">
+                            <a href="">新闻公告</a>
+                        </div>
+                    </a>
+
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>下载中心</h3>
+                        <div class="nav__list__items__panel">
+                            <a href="">游戏下载</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>注册账号</h3>
+                        <div class="nav__list__items__panel-third">
+                            <a href="">注册账号</a>
+                            <a href="">取回密码</a>
+                            <a href="">修改密码</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank"><img src="https://103.mu10.com/assets/2/Images/img_logo01.png"
+                            alt=""></a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>会员功能</h3>
+                        <div class="nav__list__items__panel">
+                            <a href="">角色管理</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>游戏排行</h3>
+                        <div class="nav__list__items__panel">
+                            <a href="">角色排行</a>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav__list__items">
+                    <a href="" target="_blank">
+                        <h3>游戏赞助</h3>
+                        <div class="nav__list__items__panel">
+                            <a href="">游戏赞助</a>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+    </header>
+
+    <main class="body__container">
+        <div class="body__container__top">
+            <div class="gameLog">
+                <h2>MU日志</h2>
+                <ul class="gameLog__list">
+                    <li>
+                        <img src="	https://103.mu10.com/assets/2/Images/201508314E504EF141994F94.png" alt="">
+                        <br>
+                        <strong>[游戏版本]</strong>
+                        <span class="gameLog__txt">
+                            原味!
+                            <br>
+                            奇迹的战场 一直在等待你的到来！
+                        </span>
+                    </li>
+
+                    <li class="gameLog__list__item">
+                        <img src="https://103.mu10.com/assets/2/Images/201508314E504EF141994F94.png" alt="">
+                        <br>
+                        <strong>[WEBZEN]EG正版端</strong>
+                        <span class="gameLog__txt">
+                            全新！
+                            <br>
+                            都市品牌长久稳定！
+                        </span>
+                    </li>
+
+                </ul>
+                <a href="" class="gameLog__btn__more" target="_blank">MU日志记录</a>
+            </div>
+
+            <div class="gameNotice">
+                <h2 class="gameNotice__title">游戏公告</h2>
+                <ul class="gameNotice__title__list">
+                    <li class="gameNotice__title__list__item">
+                        <a href="">【都市奇迹】 【游戏处罚条例】</a>
+                        <span class="time">2021-04-18</span>
+                    </li>
+                    <li class="gameNotice__title__list__item">
+                        <a href="">【都市奇迹】 【套装搭配与介绍】</a>
+                        <span class="time">2021-04-18</span>
+                    </li>
+                    <li class="gameNotice__title__list__item">
+                        <a href="">【都市奇迹】 【多彩宝石用途】</a>
+                        <span class="time">2021-04-18</span>
+                    </li>
+                    <li class="gameNotice__title__list__item">
+                        <a href="">【都市奇迹】 【新手必看攻略】</a>
+                        <span class="time">2021-04-18</span>
+                    </li>
+                    <li class="gameNotice__title__list__item">
+                        <a href="" class="gameNotice__title__list__item-text">【都市奇迹】【MU一转、二转、三转详细攻略】</a>
+                        <span class="time">2021-04-18</span>
+                    </li>
+
+                </ul>
+                <a href="" class="gameNotice__btn__more"></a>
+            </div>
+        </div>
+
+        <!-- 游戏描述 -->
+        <div class="gameDes">
+            <div class="gameDes__title">
+                <strong style="color:#674D88 ;">游戏说明介绍</strong>
+                <a href="" style="color: red;" target="_blank">（更多精彩特色内容请点击了解详情）</a>
+
+            </div>
+
+            <div class="gameDes__text">
+                <table border="1">
+                    <tr class="tr1">
+                        <td>[1.03H版]</td>
+                        <td>重金制作EG正版端 全职业2连击，经典设置，满点8000-10000点【BOSS多多，请看本服活动】</td>
+                    </tr>
+                    <tr class="tr2">
+                        <td>[顶级装备]</td>
+                        <td>顶级装备为HS黑龙王套装（可点-7）其次为400卓越镶嵌（无套装属性）强化龙和HS龙级别和以下套装怀旧！</td>
+                    </tr>
+                    <tr class="tr3">
+                        <td>[经营模式]</td>
+                        <td>游戏最高掉落3属性装备.武器.首饰！长期置顶广告，透视系统，绝无暗箱操作，任何人无任何待遇，长久耐玩！</td>
+                    </tr>
+                    <tr class="tr4">
+                        <td>[全新功能]</td>
+                        <td>玩家掉线后会自动链接游戏，返回原地并且继续释放技能拾取物品，24小时无人看守挂机，再也不用担心掉线了！</td>
+                    </tr>
+                    <tr class="tr5">
+                        <td>[升级经验]</td>
+                        <td>经典积分服，100倍经验，50倍大师，不变态无秒死，PK全凭技术【纷争地图→积分地图击杀BOSS掉落100积分】</td>
+                    </tr>
+                    <tr class="tr6">
+                        <td>[升级点数]</td>
+                        <td>各职业属性点分别为15/16/18点,普通人物220级转职后16点,魔剑.圣导为18点，圣导统率999点(不可洗)各职业平衡</td>
+                    </tr>
+                    <tr class="tr7">
+                        <td>[新手奖励]</td>
+                        <td>新人仓库送5000W游戏币、战士和圣导上线送1500点属性点、法师送2000点、召唤2500点、魔剑、妹妹送3000点</td>
+                    </tr>
+                    <tr class="tr8">
+                        <td>[商店物品]</td>
+                        <td>大陆NPC售红.蓝200瓶/组，1.2.3转职物品，1代翅膀，血色披风.恶魔通行证,技能书,+9龙王级别装备！</td>
+                    </tr>
+                    <tr class="tr9">
+                        <td>[游戏功能]</td>
+                        <td>失落PK不红名,洗红指令 /洗红 洗红100积分*人头,洗点免费（洗点不洗统率）洗点指令 /洗点 /大师洗点 (大师洗点会清空技能)</td>
+                    </tr>
+                    <tr class="tr10">
+                        <td>[练级指南]</td>
+                        <td>大陆骷髅门→地下城2→亚特兰蒂斯2→幽暗森林→坎特鲁废墟1→坎特鲁废墟2→坎特鲁遗址→冰霜之城→安宁池</td>
+                    </tr>
+                    <tr class="tr11">
+                        <td>[宝石兑换]</td>
+                        <td>再生原石50分,创造2分,生命2分,套装2分,守护1分,羽毛1分,祝福1分,灵魂1分,卖商店或大陆,仙踪林,幻术NPC一键换分
+
+                            常用命令： / 挂机 /积分地图 /洗红 /广告 /追踪角色 /狮子吼（喜从天降，每30分钟从在线玩家中随机抽取30%的玩家奖励100积分。 ）</td>
+                    </tr>
+                    <tr class="tr12">
+                        <td>[装备爆率]</td>
+                        <td>坎特鲁废墟、遗址随机爆1-3属普通套装,安宁爆1-3属强化套装,冰霜爆1-3属400级装备，黄金宝箱爆顶级的黑龙王套装</td>
+                    </tr>
+                    <tr class="tr13">
+                        <td>[掉率合成]</td>
+                        <td>祝.灵.玛1/100,生.羽.守1/150,创1/200,套装1/150,400级装备1/200，+13合成在官方基础上增加15%概率，人人轻松穿+13装备</td>
+                    </tr>
+                    <tr class="tr14">
+                        <td>[大天设置]</td>
+                        <td>开放不变态各职业大天套-武器+项链，魔剑普通套装项链改为亚手/圣导项链改为毒蛇盾【还您一个大天使梦】</td>
+                    </tr>
+                    <tr class="tr15">
+                        <td>[离线设置]</td>
+                        <td>电信+网通+移动线路，全地图开放积分交易，离线挂机,口令/挂机，方便玩家不在线交易，IP限制3开。</td>
+                    </tr>
+                    <tr class="tr16">
+                        <td>状态设置]</td>
+                        <td>战士暴血、圣导致命、法师守护、召唤反伤与官方一致，MM加攻防为官方的1.2倍（职业差距最小化）组队打怪可额外增加经验</td>
+                    </tr>
+                    <tr class="tr17">
+                        <td>[Ｘ店物品]</td>
+                        <td>X店出售附魔旗帜,强化恶魔.天使,多彩宝石,神毛,火种,幸运符,荧光宝石,入场卷，三代翅膀等</td>
+                    </tr>
+                    <tr class="tr18">
+                        <!-- <td></td> -->
+                        <td colspan="2" style="text-align: center; font-size: 16px;">【各种BOSS、攻城奖励、扩展功能、重要声明】</td>
+                    </tr>
+                    <tr class="tr19">
+                        <td>[冰霜巨蛛]</td>
+                        <td>蜘蛛2小时更新一次：每次1只，必爆黄金宝箱：黄金宝箱可爆一切顶级防具，武器，七彩宝石，炎狼，翅膀，恶魔，旗帜等...</td>
+                    </tr>
+                    <tr class="tr20">
+                        <td>[昆顿魔王]</td>
+                        <td>困顿2小时更新一次：安宁四个门各1只，卡利玛7层1只，积分地图2只，困顿魔王必爆黄金宝箱</td>
+                    </tr>
+                    <tr class="tr21">
+                        <td>[炼狱魔王]</td>
+                        <td>炼狱魔王2小时一次：积分地图2只，必爆黄金宝箱：宝箱可爆一切顶级防具，武器，七彩宝石，炎狼，翅膀，恶魔，旗帜等...</td>
+                    </tr>
+                    <tr class="tr22">
+                        <td>[咒怨魔王]</td>
+                        <td>咒怨魔王24小时一次：必爆10个黄金宝箱，天魔,海魔，炽炎魔2小时一次,必掉幸运保护符</td>
+                    </tr>
+                    <tr class="tr23">
+                        <td>[黄金龙王]</td>
+                        <td>每晚8点：冰霜之城门口1只，必爆10个黄金宝箱，玩家必争BOSS，血量防御攻击非常强悍，建议组队击杀</td>
+                    </tr>
+                    <tr class="tr24">
+                        <td>[攻城设置]</td>
+                        <td>每晚9点开放，盟主奖励500积分，盟员奖励1000分平均分配， 增加城主专属地图（大陆NPC）方便挂机、打宝 （内有2只BOSS）</td>
+                    </tr>
+                    <tr class="tr25">
+                        <td>[欢乐时光]</td>
+                        <td>每晚8-10点提高经验爆率20%!砍特鲁废墟1-2层晚8点-早8点禁止pk，积分地图，击杀BOSS掉落100积分
+                            冰霜地图掉落黄金宝箱：黄金宝箱可爆一切顶级防具，武器，七彩宝石，炎狼，翅膀，恶魔，旗帜等...</td>
+                    </tr>
+                    <tr class="tr26">
+                        <td>[扩展功能]</td>
+                        <td>游戏开放玩家上线公告、BOSS更新提示、人物怪物显血、PK公告、合成公告、七彩宝石等活动...</td>
+                    </tr>
+                    <tr class="tr27">
+                        <td>[重要声明]</td>
+                        <td>登陆器自带F7小助手！禁止在游戏出售账号，禁止使用一切外挂，加速，类软件，发现无需警告直接三封，珍惜劳动成果</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+
+        <!-- 侧边栏 -->
+        <aside class="asideBox">
+            <section class="loginBox">
+                <div>
+                    <h2>注册账号</h2>
+                    <a href="" target="_blank">
+                        <img width="240" height="70" src="https://103.mu10.com/assets/2/Images/btn_login01.gif" alt="">
+                    </a>
+                    <div>
+                        <a href="" class="Retrieve-password" target="_blank">找回密码</a>
+                        <a href="" style="color: #337ab7;" target="_blank">修改密码</a>
+                    </div>
+
+                </div>
+                <div class="quickLink">
+                    <span>快捷链接</span>
+                    <div class="quickLink__link">
+                        <a href="" target="_blank">
+                            <img src="https://103.mu10.com/assets/2/Images/btn_pcbang_submit.gif" alt="都市奇迹">
+                        </a>
+                        <a href="" target="_blank">
+                            <img src="https://103.mu10.com/assets/2/Images/btn_pcbang_search.gif" alt="都市奇迹">
+                        </a>
+                    </div>
+
+                </div>
+                <div>
+                    <ul class="gameVersion">
+                        <li class="gameVersion__link">
+                            <a href="" target="_blank" style="color: #ab7323;">游戏版本：Season4-1.03H</a>
+                        </li>
+                        <li class="gameVersion__link">
+                            <a href="" target="_blank">经验位数：普通100倍/大师50倍</a>
+                        </li>
+                        <li class="gameVersion__link">
+                            <a href="" target="_blank">升级点数：12/13/15</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul class="iconLink">
+                        <li>
+                            <a href="" target="_blank">
+                                <img src="https://103.mu10.com/assets/2/Images/quick_banner01.gif" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank">
+                                <img src="https://103.mu10.com/assets/2/Images/quick_banner02.gif" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="" target="_blank">
+                                <img src="https://103.mu10.com/assets/2/Images/quick_banner05.gif" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="customerService">
+                    <h3>联系客服</h3>
+                    <table border="1" class="customerService__table">
+                        <tr>
+                            <td>咨询时间： </td>
+                            <td>9:00-22:00 </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="	https://103.mu10.com/assets/2/images/84.gif" alt="">游戏咨询：
+                            </td>
+                            <td>
+                                <a href="" target="_blank">
+                                    <img src="https://103.mu10.com/assets/2/images/button_old_61.gif" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="https://103.mu10.com/assets/2/images/84.gif" alt="">加入群聊：
+                            </td>
+                            <td>
+                                <a href="" target="_blank">
+                                    <img src="https://pub.idqqimg.com/wpa/images/group.png" alt="">
+                                </a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </section>
+        </aside>
+
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer_container">
+        <div class="smap"></div>
+        <div class="info">
+            <h2 class="info__logo">
+                <a href="" target="_blank">
+                    <img src="https://103.mu10.com/assets/2/Images/img_logo01.gif" alt="Webzen">
+                </a>
+            </h2>
+            <div class="info__content">
+                <ul class="info__content__list">
+                    <li class="info__content__list__items">
+                        <a href="" target="_blank">奇迹服</a>
+                    </li>
+                    <li class="info__content__list__items">
+                        <a href="" target="_blank">奇迹F</a>
+                    </li>
+                    <li class="info__content__list__items">
+                        <a href="" target="_blank">奇迹发网</a>
+                    </li>
+                    <li class="info__content__list__items">
+                        <a href="" target="_blank">最新奇迹</a>
+                    </li>
+                    <li class="info__content__list__items" style="border: none;">
+                        <a href="" target="_blank">奇迹mu</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="filings">
+            <p>网络文化经营许可证:沪网文[2017]11419-890号 沪ICP备15031505号</p>
+            <span>技术支持:都市奇迹Season4-1.03H|最好玩奇迹|奇迹sf|奇迹发布网|奇迹mu信息技术有限公司</span>
+            <a href="" target="_blank" style="color: #337ab7;">关于我们</a>
+            <a href="" target="_blank" style="color: #337ab7;">联系我们</a>
+            <span>地址：青岛市崂山区2路3号粤友大厦</span>
+        </div>
+        <a href="#top" style="color: red;float: right;">回到顶部</a>
+    </footer>
+
+
+</body>
+
+</html>
